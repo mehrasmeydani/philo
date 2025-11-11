@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:52:36 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/09 01:39:37 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/11 18:53:40 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void	*start(void *in)
 			philo->first = my_time();
 			if (philo->number_of_philos % 2 == 0 && philo->num % 2 == 1
 				&& philo->times.eat == philo->times.sleep)
-				usleep(philo->times.eat / 2 * 100);
+				usleep(10);
 			philo->last_meal = my_time();
 			break ;
 		}
 		mu(&philo->forks->start);
-		usleep(1);
+		usleep(10);
 	}
 	return (philo->f(philo));
 }

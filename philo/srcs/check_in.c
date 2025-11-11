@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:31:31 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/09 15:35:15 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/11 21:30:06 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@ static void	set_invalid(t_philo *philo)
 
 	if (philo->infos[0] % 2)
 	{
-		if (life - eat == eat + sleep)
+		if (life - eat <= eat + sleep)
 			philo->times.think = life;
+	}
+	else
+	{
+		if (life == eat + sleep)
+			philo->times.think = life + 10;
 	}
 }
 
@@ -40,15 +45,7 @@ static void	set_think(t_philo *philo)
 	}
 	else
 	{
-		if (philo->times.eat > philo->times.sleep)
-			philo->times.think = (philo->times.eat - philo->times.sleep);
-		else
-		{
-			philo->times.think = (philo->times.life - philo->times.eat
-					- philo->times.sleep) / 2;
-			if (philo->times.think < philo->times.eat / 2)
-				philo->times.think = 0;
-		}
+		philo->times.think = philo->times.eat - philo->times.sleep + 1;
 	}
 }
 

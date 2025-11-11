@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:41:28 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/08 21:55:08 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/11 19:51:36 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ t_ui	my_time(void)
 
 	if (gettimeofday(&time, NULL))
 		return (-1);
-	return ((t_ui)time.tv_usec / 100 + (time.tv_sec % 100000 * 10000));
+	return (((t_ui)time.tv_usec / 100) + (time.tv_sec % 1000000 * 10000));
 }
