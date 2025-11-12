@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:46:06 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/11 19:58:06 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:52:52 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	my_usleep(t_thinker *philo, t_ui time, t_ui life,
 				if (*philo->alive != -1)
 					return (mu(&philo->forks->live), 1);
 				*philo->alive = philo->num;
+				*philo->death = my_time();
 				mu(&philo->forks->live);
 				return (1);
 			}

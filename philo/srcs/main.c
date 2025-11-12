@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:24:44 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:46:41 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:52:09 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	set_brains(t_philo *god, int i)
 	god->brains[i].all_here = &god->all_here;
 	god->brains[i].start_god = &god->start;
 	god->brains[i].right_fork = &god->forks.mutex[i];
+	god->brains[i].death = &god->death;
 	if (i == 0)
 		god->brains[i].left_fork = &god->forks.mutex[god->infos[0] - 1];
 	else

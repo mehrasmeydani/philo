@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:22:46 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:46:18 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:52:19 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ typedef struct s_thinker
 	t_ui		*all_here;
 	t_ui		*start_god;
 	t_ui		start;
-	t_ui		death;
+	t_ui		*death;
 	void		*(*f)(struct s_thinker *);
 	t_tm		time;
 	bool		last_philo;
@@ -89,6 +89,7 @@ typedef struct s_philo
 	t_ui		all_meals;
 	t_ui		all_here;
 	t_ui		start;
+	t_ui		death;
 	int			*philo_rout;
 	void		*(*route[3])(t_thinker *);
 }	t_philo;

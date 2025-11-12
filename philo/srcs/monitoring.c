@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 12:25:34 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:18:43 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:55:08 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	*god_work(void *in)
 			ml(&philo->forks.live);
 			if (philo->living != -1)
 			{
-				printf("%u %d %s\n", (my_time() - philo->start) / 10,
+				printf("%u %d %s\n", (philo->death - philo->start) / 10,
 					philo->living, "died");
 				return (mu(&philo->forks.live), NULL);
 			}
 			mu(&philo->forks.live);
 		}
 		i++;
-		usleep(25);
+		usleep(1000);
 	}
 }
