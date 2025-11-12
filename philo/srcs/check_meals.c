@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:58:42 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/09 15:39:21 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:42:41 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	check_meals(t_thinker *philo)
 	return (0);
 }
 
-int	god_mealcheck(t_philo *philo)
+int	god_mealcheck(t_philo *god)
 {
-	ml(&philo->forks.done);
-	if (philo->all_meals == (t_ui)philo->infos[0])
-		return (mu(&philo->forks.done), 1);
-	mu(&philo->forks.done);
+	ml(&god->forks.done);
+	if (god->all_meals == (t_ui)god->infos[0])
+		return (mu(&god->forks.done), 1);
+	mu(&god->forks.done);
 	return (0);
 }

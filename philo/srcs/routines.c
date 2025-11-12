@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 22:00:40 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/11 17:37:03 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:44:35 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,28 +47,28 @@ void	*my_think(t_thinker *philo)
 	return (my_eat(philo));
 }
 
-int	set_routine(t_philo *philo)
+int	set_routine(t_philo *god)
 {
 	int	i;
 
 	i = -1;
-	philo->philo_rout = (int *)not_calloc(philo->infos[0], sizeof(int));
-	if (!philo->philo_rout)
+	god->philo_rout = (int *)not_calloc(god->infos[0], sizeof(int));
+	if (!god->philo_rout)
 		return (0);
-	while (++i < philo->infos[0])
-		philo->philo_rout[i] = i % 2;
-	if (philo->infos[0] % 2)
-		philo->philo_rout[i - 1] += 1;
-	philo->route[0] = my_eat;
-	if (philo->infos[0] % 2)
+	while (++i < god->infos[0])
+		god->philo_rout[i] = i % 2;
+	if (god->infos[0] % 2)
+		god->philo_rout[i - 1] += 1;
+	god->route[0] = my_eat;
+	if (god->infos[0] % 2)
 	{
-		philo->route[1] = my_think;
-		philo->route[2] = my_sleep;
+		god->route[1] = my_think;
+		god->route[2] = my_sleep;
 	}
 	else
 	{
-		philo->route[2] = my_think;
-		philo->route[1] = my_sleep;
+		god->route[2] = my_think;
+		god->route[1] = my_sleep;
 	}
 	return (1);
 }

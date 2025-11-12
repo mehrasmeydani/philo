@@ -6,36 +6,36 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:27:53 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/09 15:41:17 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:43:16 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/philo.h"
 
-void	free_all(t_philo *philo)
+void	free_all(t_philo *god)
 {
 	int	i;
 
 	i = -1;
-	if (philo->philo_rout)
-		free(philo->philo_rout);
-	if (philo->forks.mutex)
+	if (god->philo_rout)
+		free(god->philo_rout);
+	if (god->forks.mutex)
 	{
-		while (++i < philo->infos[0])
-			pthread_mutex_destroy(&philo->forks.mutex[i]);
-		free(philo->forks.mutex);
-		if (philo->alive_mutex)
-			pthread_mutex_destroy(&philo->forks.live);
-		if (philo->print_mutex)
-			pthread_mutex_destroy(&philo->forks.print);
-		if (philo->done_mutex)
-			pthread_mutex_destroy(&philo->forks.done);
+		while (++i < god->infos[0])
+			pthread_mutex_destroy(&god->forks.mutex[i]);
+		free(god->forks.mutex);
+		if (god->alive_mutex)
+			pthread_mutex_destroy(&god->forks.live);
+		if (god->print_mutex)
+			pthread_mutex_destroy(&god->forks.print);
+		if (god->done_mutex)
+			pthread_mutex_destroy(&god->forks.done);
 	}
 }
 
-void	free_threads(t_philo *philo, int i)
+void	free_threads(t_philo *god, int i)
 {
-	ml(&philo->forks.live);
-	philo->living = i;
-	mu(&philo->forks.live);
+	ml(&god->forks.live);
+	god->living = i;
+	mu(&god->forks.live);
 }

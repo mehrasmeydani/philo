@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:22:46 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/09 15:41:29 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:46:18 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,25 +96,25 @@ typedef struct s_philo
 void	*my_think(t_thinker *in);
 void	*my_eat(t_thinker *in);
 void	*my_sleep(t_thinker *in);
-void	free_all(t_philo *philo);
+void	free_all(t_philo *god);
 int		ml(t_mutex *in);
 int		mu(t_mutex *in);
-int		check_in(int argc, char **argv, t_philo *philo);
+int		check_in(int argc, char **argv, t_philo *god);
 int		thinker_print(t_thinker *philo, t_ui time, int num,
 			const char *action);
 t_ui	my_time(void);
 int		my_usleep(t_thinker *philo, t_ui time,
 			t_ui life, t_ui last_meal);
-void	god_start(t_philo *philo);
+void	god_start(t_philo *god);
 void	*start(void *in);
 int		check_meals(t_thinker *philo);
 int		take_fork(t_thinker *philo);
 void	put_fork(t_thinker *philo);
 void	*spaghetti_needs_two(t_thinker *in);
-int		set_routine(t_philo *philo);
+int		set_routine(t_philo *god);
 void	*god_work(void *in);
-int		create_thread(t_philo *philo);
-int		god_mealcheck(t_philo *philo);
-void	free_threads(t_philo *philo, int i);
+int		create_thread(t_philo *god);
+int		god_mealcheck(t_philo *god);
+void	free_threads(t_philo *god, int i);
 
 #endif

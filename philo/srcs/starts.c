@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:52:36 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:30:43 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:47:54 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	*start(void *in)
 		{
 			philo->first = *philo->start_god;
 			mu(&philo->forks->start);
-			if (philo->number_of_philos % 2 == 0 && philo->num % 2 == 1
-				&& philo->times.eat == philo->times.sleep)
+			if (philo->num % 2 == 1)
 				usleep(10);
 			philo->last_meal = my_time();
 			break ;
@@ -40,31 +39,31 @@ void	*start(void *in)
 	return (philo->f(philo));
 }
 
-void	god_start(t_philo *philo)
+void	god_start(t_philo *god)
 {
 	while (true)
 	{
-		ml(&philo->forks.here);
-		ml(&philo->forks.live);
-		if (philo->living != 1)
+		ml(&god->forks.here);
+		ml(&god->forks.live);
+		if (god->living != 1)
 		{
-			ml(&philo->forks.start);
-			philo->start = my_time();
-			mu(&philo->forks.start);
-			mu(&philo->forks.live);
-			mu(&philo->forks.here);
+			ml(&god->forks.start);
+			god->start = my_time();
+			mu(&god->forks.start);
+			mu(&god->forks.live);
+			mu(&god->forks.here);
 			break ;
 		}
-		mu(&philo->forks.live);
-		if (philo->all_here == (t_ui)philo->infos[0])
+		mu(&god->forks.live);
+		if (god->all_here == (t_ui)god->infos[0])
 		{
-			ml(&philo->forks.start);
-			philo->start = my_time();
-			mu(&philo->forks.start);
-			mu(&philo->forks.here);
+			ml(&god->forks.start);
+			god->start = my_time();
+			mu(&god->forks.start);
+			mu(&god->forks.here);
 			break ;
 		}
-		mu(&philo->forks.here);
+		mu(&god->forks.here);
 		usleep(1);
 	}
 }

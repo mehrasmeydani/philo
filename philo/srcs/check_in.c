@@ -6,52 +6,52 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:31:31 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/11 21:30:06 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:47:04 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../header/philo.h"
 
-static void	set_invalid(t_philo *philo)
+static void	set_invalid(t_philo *god)
 {
-	const t_ui	sleep = philo->times.sleep;
-	const t_ui	eat = philo->times.eat;
-	const t_ui	life = philo->times.life;
+	const t_ui	sleep = god->times.sleep;
+	const t_ui	eat = god->times.eat;
+	const t_ui	life = god->times.life;
 
-	if (philo->infos[0] % 2)
+	if (god->infos[0] % 2)
 	{
 		if (life - eat <= eat + sleep)
-			philo->times.think = life;
+			god->times.think = life;
 	}
 	else
 	{
 		if (life == eat + sleep)
-			philo->times.think = life + 10;
+			god->times.think = life + 10;
 	}
 }
 
-static void	set_think(t_philo *philo)
+static void	set_think(t_philo *god)
 {
-	if (philo->infos[0] % 2)
+	if (god->infos[0] % 2)
 	{
-		if (philo->times.eat <= philo->times.sleep)
+		if (god->times.eat <= god->times.sleep)
 		{
-			philo->times.think = (philo->times.eat * 2 - philo->times.sleep)
-				* (philo->times.eat * 2 > philo->times.sleep) / 2;
+			god->times.think = (god->times.eat * 2 - god->times.sleep)
+				* (god->times.eat * 2 > god->times.sleep) / 2;
 		}
 		else
-			philo->times.think = (philo->times.eat - philo->times.sleep)
+			god->times.think = (god->times.eat - god->times.sleep)
 				* 3 / 2;
 	}
 	else
 	{
-		philo->times.think = philo->times.eat - philo->times.sleep + 1;
+		god->times.think = god->times.eat - god->times.sleep + 1;
 	}
 }
 
-int	check_in(int argc, char **argv, t_philo *philo)
+int	check_in(int argc, char **argv, t_philo *god)
 {
-	philo->infos[4] = -1;
+	god->infos[4] = -1;
 	if (argc < 5)
 		return (ft_put_endl("Not enough arguments", 2), 0);
 	while (--argc > 0)
@@ -61,14 +61,14 @@ int	check_in(int argc, char **argv, t_philo *philo)
 			return (ft_put_str("Argument ", 2), ft_putnbr(argc, 2),
 				ft_put_endl(": is not a valid number", 2), 0);
 		else
-			philo->infos[argc - 1] = not_atoi(argv[argc]);
+			god->infos[argc - 1] = not_atoi(argv[argc]);
 	}
-	philo->times.life = philo->infos[1] * 10;
-	philo->times.eat = philo->infos[2] * 10;
-	philo->times.sleep = philo->infos[3] * 10;
-	set_think(philo);
-	set_invalid(philo);
-	if (philo->infos[4] != -1)
-		philo->times.must_eat = philo->infos[4];
+	god->times.life = god->infos[1] * 10;
+	god->times.eat = god->infos[2] * 10;
+	god->times.sleep = god->infos[3] * 10;
+	set_think(god);
+	set_invalid(god);
+	if (god->infos[4] != -1)
+		god->times.must_eat = god->infos[4];
 	return (1);
 }
