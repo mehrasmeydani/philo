@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 12:24:28 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/09 12:24:53 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:31:28 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	create_and_set_threads(t_philo *philo)
 			philo->brains[i].last_philo = 1;
 		if (pthread_create(&philo->brains[i].philo, NULL,
 				start, &philo->brains[i]))
-			return (free_threads(philo, i), -1);
+			return (free_threads(philo, i), i);
 	}
 	return (i);
 }
@@ -43,8 +43,6 @@ int	create_thread(t_philo *philo)
 	if (pthread_create(&philo->omnipotent, NULL, god_work, philo))
 		return (free_all(philo), 0);
 	i = create_and_set_threads(philo);
-	if (i == -1)
-		return (0);
 	pthread_join(philo->omnipotent, NULL);
 	j = -1;
 	while (++j < i)

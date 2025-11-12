@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 12:25:34 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/11 21:30:17 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/12 01:18:43 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	*god_work(void *in)
 			mu(&philo->forks.live);
 		}
 		i++;
-		usleep(50);
+		usleep(25);
 	}
 }
