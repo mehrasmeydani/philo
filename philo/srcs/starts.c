@@ -42,7 +42,6 @@ void	*start(void *in)
 void	god_put_mutex(t_philo *god)
 {
 	mu(&god->forks.start);
-	mu(&god->forks.live);
 	mu(&god->forks.here);
 }
 
@@ -52,8 +51,9 @@ void	god_start(t_philo *god)
 	{
 		ml(&god->forks.here);
 		ml(&god->forks.live);
-		if (god->living != 1)
+		if (god->living != -1 || god->all_here == (t_ui)god->infos[0])
 		{
+			mu(&god->forks.live);
 			ml(&god->forks.start);
 			god->start = my_time();
 			while (!god->start)
@@ -62,14 +62,6 @@ void	god_start(t_philo *god)
 			break ;
 		}
 		mu(&god->forks.live);
-		if (god->all_here == (t_ui)god->infos[0])
-		{
-			ml(&god->forks.start);
-			god->start = my_time();
-			mu(&god->forks.start);
-			mu(&god->forks.here);
-			break ;
-		}
 		mu(&god->forks.here);
 		usleep(1);
 	}

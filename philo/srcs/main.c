@@ -38,8 +38,8 @@ int	create_mutex(t_philo *god)
 {
 	int	i;
 
-	god->brains = (t_thinker *)calloc(god->infos[0], sizeof(t_thinker));
-	god->forks.mutex = (t_mutex *)calloc(god->infos[0], sizeof(t_mutex));
+	god->brains = (t_thinker *)not_calloc(god->infos[0], sizeof(t_thinker));
+	god->forks.mutex = (t_mutex *)not_calloc(god->infos[0], sizeof(t_mutex));
 	if (!god->brains || !god->forks.mutex)
 		return (free_all(god), 0);
 	i = -1;
