@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:52:36 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:47:54 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/15 12:36:40 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,13 @@ void	*start(void *in)
 	return (philo->f(philo));
 }
 
+void	god_put_mutex(t_philo *god)
+{
+	mu(&god->forks.start);
+	mu(&god->forks.live);
+	mu(&god->forks.here);
+}
+
 void	god_start(t_philo *god)
 {
 	while (true)
@@ -49,9 +56,9 @@ void	god_start(t_philo *god)
 		{
 			ml(&god->forks.start);
 			god->start = my_time();
-			mu(&god->forks.start);
-			mu(&god->forks.live);
-			mu(&god->forks.here);
+			while (!god->start)
+				god->start = my_time();
+			god_put_mutex(god);
 			break ;
 		}
 		mu(&god->forks.live);
