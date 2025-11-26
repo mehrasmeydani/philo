@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:52:36 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/15 12:36:40 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/26 23:24:36 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	god_start(t_philo *god)
 			god->start = my_time();
 			while (!god->start)
 				god->start = my_time();
+			god->death = god->start;
 			god_put_mutex(god);
 			break ;
 		}

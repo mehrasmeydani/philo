@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 12:24:28 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/26 17:04:49 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/26 23:22:27 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	create_thread(t_philo *god)
 	int	j;
 
 	if (pthread_create(&god->omnipotent, NULL, god_work, god))
-		return (free_all(god), 0);
+		return (free_all(god), ft_put_endl("thread fail", 2), 0);
 	i = create_and_set_threads(god);
 	pthread_join(god->omnipotent, NULL);
 	j = -1;
@@ -47,5 +47,7 @@ int	create_thread(t_philo *god)
 		pthread_join(god->brains[j].philo, NULL);
 	free(god->brains);
 	god->brains = NULL;
+	if (i != god->infos[0])
+		ft_put_endl("thread_fail", 2);	
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: megardes <megardes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/28 14:44:18 by codespace         #+#    #+#              #
-#    Updated: 2025/11/26 17:02:49 by megardes         ###   ########.fr        #
+#    Updated: 2025/11/27 00:23:50 by megardes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRCS		=	${addprefix ${PRE_SRC}, ${SRC}}
 PRE_SRC		=	srcs/
 HEAD		=	header/
 NAME		=	philo
-CFLAGS		=	-Wall -Wextra -Werror -g
+CFLAGS		=	-Wall -Wextra -Werror
 OBJ			=	${SRC:.c=.o}
 PRE_OBJ		=	obj/
 OBJS		=	${addprefix ${PRE_OBJ}, ${OBJ}}
