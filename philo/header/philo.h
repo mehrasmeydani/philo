@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:22:46 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:52:19 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:41:24 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ typedef struct s_times
 typedef struct s_fork
 {
 	t_mutex	*mutex;
-	t_mutex	print;
 	t_mutex	live;
 	t_mutex	done;
 	t_mutex	here;
@@ -83,9 +82,10 @@ typedef struct s_philo
 	t_fork		forks;
 	t_times		times;
 	int			living;
-	bool		print_mutex;
 	bool		alive_mutex;
 	bool		done_mutex;
+	bool		here_mutex;
+	bool		start_mutex;
 	t_ui		all_meals;
 	t_ui		all_here;
 	t_ui		start;

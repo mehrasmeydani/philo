@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/09 12:24:28 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:51:05 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:04:49 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ int	create_thread(t_philo *god)
 	while (++j < i)
 		pthread_join(god->brains[j].philo, NULL);
 	free(god->brains);
+	god->brains = NULL;
 	return (1);
 }

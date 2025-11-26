@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 22:00:40 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:44:35 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:41:48 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,31 @@
 
 void	*my_eat(t_thinker *philo)
 {
-	if (!take_fork(philo))
-		return (NULL);
-	philo->last_meal = my_time();
-	if (thinker_print(philo, philo->first, philo->num, "is eating"))
-		return (mu(philo->right_fork), mu(philo->left_fork), NULL);
-	if (my_usleep(philo, philo->times.eat, philo->times.life, philo->last_meal))
-		return (mu(philo->right_fork), mu(philo->left_fork), NULL);
-	put_fork(philo);
-	if (philo->times.must_eat != 0 && check_meals(philo))
-		return (NULL);
-	return (my_sleep(philo));
+	while (true)
+	{
+		if (!take_fork(philo))
+			return (NULL);
+		philo->last_meal = my_time();
+		if (thinker_print(philo, philo->first, philo->num, "is eating"))
+			return (mu(philo->right_fork), mu(philo->left_fork), NULL);
+		if (my_usleep(philo, philo->times.eat, philo->times.life,
+				philo->last_meal))
+			return (mu(philo->right_fork), mu(philo->left_fork), NULL);
+		put_fork(philo);
+		if (philo->times.must_eat != 0 && check_meals(philo))
+			return (NULL);
+		if (thinker_print(philo, philo->first, philo->num, "is sleeping"))
+			return (NULL);
+		if (my_usleep(philo, philo->times.sleep, philo->times.life,
+				philo->last_meal))
+			return (NULL);
+		if (thinker_print(philo, philo->first, philo->num, "is thinking"))
+			return (NULL);
+		if (my_usleep(philo, philo->times.think, philo->times.life,
+				philo->last_meal))
+			return (NULL);
+	}
+	return (NULL);
 }
 
 void	*my_sleep(t_thinker *philo)

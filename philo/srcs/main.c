@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 19:24:44 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:52:09 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:39:13 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ int	create_mutex(t_philo *god)
 	while (++i < god->infos[0])
 		if (!set_brains(god, i))
 			return (0);
-	god->print_mutex = pthread_mutex_init(&god->forks.print, NULL);
 	god->alive_mutex = pthread_mutex_init(&god->forks.live, NULL);
 	god->done_mutex = pthread_mutex_init(&god->forks.done, NULL);
-	pthread_mutex_init(&god->forks.start, NULL);
-	pthread_mutex_init(&god->forks.here, NULL);
-	if (god->print_mutex || god->alive_mutex || god->done_mutex)
+	god->start_mutex = pthread_mutex_init(&god->forks.start, NULL);
+	god->here_mutex = pthread_mutex_init(&god->forks.here, NULL);
+	if (god->alive_mutex || god->done_mutex || god->here_mutex
+		|| god->start_mutex)
 		return (free_all(god), 0);
 	return (1);
 }

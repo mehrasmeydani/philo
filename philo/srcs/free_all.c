@@ -6,7 +6,7 @@
 /*   By: megardes <megardes@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/08 21:27:53 by megardes          #+#    #+#             */
-/*   Updated: 2025/11/12 01:43:16 by megardes         ###   ########.fr       */
+/*   Updated: 2025/11/26 17:24:32 by megardes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	free_all(t_philo *god)
 	i = -1;
 	if (god->philo_rout)
 		free(god->philo_rout);
+	if (god->brains)
+	{
+		free(god->brains);
+		god->brains = NULL;
+	}
 	if (god->forks.mutex)
 	{
 		while (++i < god->infos[0])
@@ -26,10 +31,12 @@ void	free_all(t_philo *god)
 		free(god->forks.mutex);
 		if (god->alive_mutex)
 			pthread_mutex_destroy(&god->forks.live);
-		if (god->print_mutex)
-			pthread_mutex_destroy(&god->forks.print);
 		if (god->done_mutex)
 			pthread_mutex_destroy(&god->forks.done);
+		if (god->here_mutex)
+			pthread_mutex_destroy(&god->forks.here);
+		if (god->start_mutex)
+			pthread_mutex_destroy(&god->forks.start);
 	}
 }
 
